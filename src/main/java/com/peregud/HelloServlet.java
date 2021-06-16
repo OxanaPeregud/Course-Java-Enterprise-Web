@@ -1,4 +1,4 @@
-package com.peregud.JD2_WEB;
+package com.peregud;
 
 import java.io.*;
 import javax.servlet.http.*;
