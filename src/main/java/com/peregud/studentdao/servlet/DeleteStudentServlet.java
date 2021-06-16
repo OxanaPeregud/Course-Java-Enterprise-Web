@@ -17,6 +17,6 @@ public class DeleteStudentServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String id = request.getParameter("studentId");
         studentService.deleteStudent(Integer.parseInt(id));
-        response.sendRedirect("/student/list");
+        response.sendRedirect("../student/list");
     }
 }

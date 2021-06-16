@@ -32,6 +32,6 @@ public class AddStudentServlet extends HttpServlet {
         student.setLastName(request.getParameter("lastName"));
         student.setEmail(request.getParameter("email"));
         studentService.addStudent(student);
-        response.sendRedirect("/student/list");
+        response.sendRedirect("../student/list");
     }
 }
