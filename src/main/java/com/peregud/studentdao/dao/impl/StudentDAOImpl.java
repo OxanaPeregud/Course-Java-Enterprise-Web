@@ -1,5 +1,6 @@
-package com.peregud.studentdao.dao;
+package com.peregud.studentdao.dao.impl;
 
+import com.peregud.studentdao.dao.StudentDAO;
 import com.peregud.studentdao.model.Student;
 import com.peregud.studentdao.util.HibernateUtil;
 
@@ -11,7 +12,7 @@ import java.util.List;
 public class StudentDAOImpl implements StudentDAO {
 
     @Override
-    public List<Student> getStudents() {
+    public List<Student> getAll() {
         EntityManager entityManager = HibernateUtil.createEntityManager();
         List<Student> students = new ArrayList<>();
         try {
@@ -29,7 +30,7 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public void addStudent(Student student) {
+    public Student add(Student student) {
         EntityManager entityManager = HibernateUtil.createEntityManager();
         try {
             entityManager.getTransaction().begin();
@@ -41,10 +42,11 @@ public class StudentDAOImpl implements StudentDAO {
         } finally {
             entityManager.close();
         }
+        return student;
     }
 
     @Override
-    public void deleteStudent(int id) {
+    public void delete(int id) {
         EntityManager entityManager = HibernateUtil.createEntityManager();
         try {
             entityManager.getTransaction().begin();
@@ -61,7 +63,7 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public Student getStudentById(int id) {
+    public Student getById(int id) {
         EntityManager entityManager = HibernateUtil.createEntityManager();
         Student student = new Student();
         try {

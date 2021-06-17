@@ -1,8 +1,8 @@
 package com.peregud.studentdao.servlet;
 
+import com.peregud.studentdao.dao.StudentDAO;
+import com.peregud.studentdao.dao.impl.StudentDAOImpl;
 import com.peregud.studentdao.model.Student;
-import com.peregud.studentdao.service.StudentService;
-import com.peregud.studentdao.service.StudentServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +13,7 @@ import java.io.IOException;
 
 @WebServlet("/student/add")
 public class AddStudentServlet extends HttpServlet {
-    private final StudentService studentService = new StudentServiceImpl();
+    private final StudentDAO studentDAO = new StudentDAOImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,7 +31,7 @@ public class AddStudentServlet extends HttpServlet {
         student.setFirstName(request.getParameter("firstName"));
         student.setLastName(request.getParameter("lastName"));
         student.setEmail(request.getParameter("email"));
-        studentService.addStudent(student);
+        studentDAO.add(student);
         response.sendRedirect("../student/list");
     }
 }
