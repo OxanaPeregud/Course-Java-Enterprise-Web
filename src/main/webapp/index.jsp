@@ -1,1 +1,1 @@
-<% response.sendRedirect(request.getContextPath() + "/studentdao"); %>
+<% response.sendRedirect(request.getContextPath() + "/multipletables"); %>
