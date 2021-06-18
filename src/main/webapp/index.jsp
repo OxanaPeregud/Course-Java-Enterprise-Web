@@ -1,1 +1,1 @@
-<% response.sendRedirect(request.getContextPath() + "/list"); %>
+<% response.sendRedirect(request.getContextPath() + "/studentdao"); %>
