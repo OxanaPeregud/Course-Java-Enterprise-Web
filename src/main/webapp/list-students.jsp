@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>Students</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -32,11 +33,11 @@
             <%--@elvariable id="students" type="java.util.List"--%>
             <c:forEach var="tempStudent" items="${students}">
 
-                <c:url var="updateLink" value="/student/update">
+                <c:url var="updateLink" value="/update">
                     <c:param name="studentId" value="${tempStudent.id}"/>
                 </c:url>
 
-                <c:url var="deleteLink" value="/student/delete">
+                <c:url var="deleteLink" value="/delete">
                     <c:param name="studentId" value="${tempStudent.id}"/>
                 </c:url>
 

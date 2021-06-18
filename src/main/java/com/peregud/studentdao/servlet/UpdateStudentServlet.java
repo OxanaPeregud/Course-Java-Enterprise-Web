@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/student/update")
+@WebServlet("/update")
 public class UpdateStudentServlet extends HttpServlet {
     private final StudentDAO studentDAO = new StudentDAOImpl();
 
@@ -20,6 +20,6 @@ public class UpdateStudentServlet extends HttpServlet {
         String id = request.getParameter("studentId");
         Student student = studentDAO.getById(Integer.parseInt(id));
         request.setAttribute("student", student);
-        request.getRequestDispatcher("/WEB-INF/view/student-form.jsp").forward(request, response);
+        request.getRequestDispatcher("/student-form.jsp").forward(request, response);
     }
 }

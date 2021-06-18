@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/student/add")
+@WebServlet("/add")
 public class AddStudentServlet extends HttpServlet {
     private final StudentDAO studentDAO = new StudentDAOImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/view/student-form.jsp").forward(request, response);
+        request.getRequestDispatcher("/student-form.jsp").forward(request, response);
     }
 
     @Override
@@ -32,6 +32,6 @@ public class AddStudentServlet extends HttpServlet {
         student.setLastName(request.getParameter("lastName"));
         student.setEmail(request.getParameter("email"));
         studentDAO.add(student);
-        response.sendRedirect("../student/list");
+        response.sendRedirect(request.getContextPath() + "/list");
     }
 }

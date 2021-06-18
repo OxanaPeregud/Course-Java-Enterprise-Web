@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/student/delete")
+@WebServlet("/delete")
 public class DeleteStudentServlet extends HttpServlet {
     private final StudentDAO studentDAO = new StudentDAOImpl();
 
@@ -17,6 +17,6 @@ public class DeleteStudentServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String id = request.getParameter("studentId");
         studentDAO.delete(Integer.parseInt(id));
-        response.sendRedirect("../student/list");
+        response.sendRedirect(request.getContextPath() + "/list");
     }
 }

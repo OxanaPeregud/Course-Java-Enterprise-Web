@@ -1,1 +1,1 @@
-<% response.sendRedirect("student/list"); %>
+<% response.sendRedirect(request.getContextPath() + "/list"); %>

@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/student/list")
+@WebServlet("/list")
 public class StudentListServlet extends HttpServlet {
     private final StudentDAO studentDAO = new StudentDAOImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("students", studentDAO.getAll());
-        request.getRequestDispatcher("/WEB-INF/view/list-students.jsp").forward(request,response);
+        request.getRequestDispatcher("/list-students.jsp").forward(request,response);
     }
 }

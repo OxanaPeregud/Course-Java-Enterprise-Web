@@ -3,6 +3,9 @@
 
 <head>
     <title>Add Student</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet"
+          href="add-student-style.css">
 </head>
 
 <body>
@@ -15,7 +18,7 @@
 <div id="container">
     <h3>Add Student</h3>
 
-    <form name="addStudent" action="${pageContext.request.contextPath}/student/add" method="post">
+    <form name="addStudent" action="${pageContext.request.contextPath}/add" method="post">
 
         <label>
             <input type="text" name="studentId" value="${student.id}" hidden>
@@ -53,7 +56,7 @@
     <div style="clear: both;"></div>
 
     <p>
-        <a href="${pageContext.request.contextPath}/student/list">Back to List</a>
+        <a href="${pageContext.request.contextPath}/list">Back to List</a>
     </p>
 
 </div>
