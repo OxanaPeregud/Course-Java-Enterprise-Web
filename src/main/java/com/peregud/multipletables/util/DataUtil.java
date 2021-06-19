@@ -23,7 +23,7 @@ public class DataUtil {
         }
     }
 
-    public <T> List<?> getAll(String entityName) {
+    public List<?> getAll(String entityName) {
         EntityManager entityManager = HibernateUtil.createEntityManager();
         List<?> list = new ArrayList<>();
         try {
