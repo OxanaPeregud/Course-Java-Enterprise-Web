@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>Teachers</title>
+    <link type="text/css" rel="stylesheet" href="multiple-tables.css">
 </head>
 
 <body>
@@ -16,8 +17,14 @@
 <div id="container">
     <div id="content">
 
+        <input type="button" value="Add Teachers"
+               onclick="window.location.href='add-teachers'; return false;"
+               class="add-button"
+        />
+
         <table>
             <tr>
+                <th>Teacher ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
             </tr>
@@ -26,6 +33,7 @@
             <c:forEach var="tempTeacher" items="${teachers}">
 
                 <tr>
+                    <td> ${tempTeacher.teacherId} </td>
                     <td> ${tempTeacher.firstName} </td>
                     <td> ${tempTeacher.lastName} </td>
                 </tr>
