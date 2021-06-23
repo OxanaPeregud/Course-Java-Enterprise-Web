@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Applicants</title>
-    <link type="text/css" rel="stylesheet" href="style-application.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/view/style-application.css">
 </head>
 
 <body>

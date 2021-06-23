@@ -12,6 +12,6 @@ public class CalculatingOperations extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/choose-calculation.jsp").forward(request,response);
+        request.getRequestDispatcher("/view/choose-calculation.jsp").forward(request,response);
     }
 }

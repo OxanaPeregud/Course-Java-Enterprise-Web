@@ -23,9 +23,9 @@ public class CalculateRectangleAreaServlet extends HttpServlet {
         try {
             double area = RectangleUtil.calculateArea(Double.parseDouble(firstSide), Double.parseDouble(secondSide));
             request.setAttribute("area", area);
-            request.getRequestDispatcher("/calculate-rectangle-area.jsp").forward(request, response);
+            request.getRequestDispatcher("/view/calculate-rectangle-area.jsp").forward(request, response);
         } catch (Exception e) {
-            response.sendRedirect(request.getContextPath() + "/calculate-rectangle-area.jsp");
+            response.sendRedirect(request.getContextPath() + "/view/calculate-rectangle-area.jsp");
         }
     }
 }

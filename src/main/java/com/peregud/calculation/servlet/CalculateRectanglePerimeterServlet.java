@@ -23,9 +23,9 @@ public class CalculateRectanglePerimeterServlet extends HttpServlet {
         try {
             double perimeter = RectangleUtil.calculatePerimeter(Double.parseDouble(firstSide), Double.parseDouble(secondSide));
             request.setAttribute("perimeter", perimeter);
-            request.getRequestDispatcher("/calculate-rectangle-perimeter.jsp").forward(request, response);
+            request.getRequestDispatcher("/view/calculate-rectangle-perimeter.jsp").forward(request, response);
         } catch (Exception e) {
-            response.sendRedirect(request.getContextPath() + "/calculate-rectangle-perimeter.jsp");
+            response.sendRedirect(request.getContextPath() + "/view/calculate-rectangle-perimeter.jsp");
         }
     }
 }

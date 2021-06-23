@@ -15,6 +15,6 @@ public class GetTasksServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("tasks", DataUtil.getAll("Task"));
-        request.getRequestDispatcher("/tasks-table.jsp").forward(request,response);
+        request.getRequestDispatcher("view/tasks-table.jsp").forward(request,response);
     }
 }

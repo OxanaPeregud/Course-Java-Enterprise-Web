@@ -12,6 +12,6 @@ public class ChooseTableServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/select-table.jsp").forward(request, response);
+        request.getRequestDispatcher("view/select-table.jsp").forward(request, response);
     }
 }

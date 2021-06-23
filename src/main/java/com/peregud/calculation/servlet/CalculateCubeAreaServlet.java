@@ -22,9 +22,9 @@ public class CalculateCubeAreaServlet extends HttpServlet {
         try {
             double volume = CubeUtil.calculateVolume(Double.parseDouble(side));
             request.setAttribute("volume", volume);
-            request.getRequestDispatcher("/calculate-cube-volume.jsp").forward(request, response);
+            request.getRequestDispatcher("/view/calculate-cube-volume.jsp").forward(request, response);
         } catch (Exception e) {
-            response.sendRedirect(request.getContextPath() + "/calculate-cube-volume.jsp");
+            response.sendRedirect(request.getContextPath() + "/view/calculate-cube-volume.jsp");
         }
     }
 }

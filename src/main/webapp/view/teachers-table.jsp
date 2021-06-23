@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Teachers</title>
-    <link type="text/css" rel="stylesheet" href="multiple-tables.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/view/multiple-tables.css">
 </head>
 
 <body>

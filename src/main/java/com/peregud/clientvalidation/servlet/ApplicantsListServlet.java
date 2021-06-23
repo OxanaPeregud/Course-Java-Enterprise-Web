@@ -15,6 +15,6 @@ public class ApplicantsListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("applicants", DBUtil.getAll());
-        request.getRequestDispatcher("/applicants-list.jsp").forward(request, response);
+        request.getRequestDispatcher("/view/applicants-list.jsp").forward(request, response);
     }
 }

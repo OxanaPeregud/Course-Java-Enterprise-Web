@@ -3,9 +3,8 @@
 
 <head>
     <title>Add Student</title>
-    <link type="text/css" rel="stylesheet" href="style.css">
-    <link type="text/css" rel="stylesheet"
-          href="add-student-style.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/view/style.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/view/add-student-style.css">
 </head>
 
 <body>

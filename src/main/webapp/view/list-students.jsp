@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Students</title>
-    <link type="text/css" rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/view/style.css">
 </head>
 
 <body>

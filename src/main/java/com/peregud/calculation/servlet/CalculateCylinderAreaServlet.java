@@ -23,9 +23,9 @@ public class CalculateCylinderAreaServlet extends HttpServlet {
         try {
             double area = CylinderUtil.calculateArea(Double.parseDouble(radius), Double.parseDouble(height));
             request.setAttribute("area", area);
-            request.getRequestDispatcher("/calculate-cylinder-area.jsp").forward(request, response);
+            request.getRequestDispatcher("/view/calculate-cylinder-area.jsp").forward(request, response);
         } catch (Exception e) {
-            response.sendRedirect(request.getContextPath() + "/calculate-cylinder-area.jsp");
+            response.sendRedirect(request.getContextPath() + "/view/calculate-cylinder-area.jsp");
         }
     }
 }

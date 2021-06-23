@@ -22,9 +22,9 @@ public class CalculateCircleAreaServlet extends HttpServlet {
         try {
             double area = CircleUtil.calculateArea(Double.parseDouble(radius));
             request.setAttribute("area", area);
-            request.getRequestDispatcher("/calculate-circle-area.jsp").forward(request, response);
+            request.getRequestDispatcher("/view/calculate-circle-area.jsp").forward(request, response);
         } catch (Exception e) {
-            response.sendRedirect(request.getContextPath() + "/calculate-circle-area.jsp");
+            response.sendRedirect(request.getContextPath() + "/view/calculate-circle-area.jsp");
         }
     }
 }

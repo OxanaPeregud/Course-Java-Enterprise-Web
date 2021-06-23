@@ -23,9 +23,9 @@ public class CalculateCylinderVolumeServlet extends HttpServlet {
         try {
             double volume = CylinderUtil.calculateVolume(Double.parseDouble(radius), Double.parseDouble(height));
             request.setAttribute("volume", volume);
-            request.getRequestDispatcher("/calculate-cylinder-volume.jsp").forward(request, response);
+            request.getRequestDispatcher("/view/calculate-cylinder-volume.jsp").forward(request, response);
         } catch (Exception e) {
-            response.sendRedirect(request.getContextPath() + "/calculate-cylinder-volume.jsp");
+            response.sendRedirect(request.getContextPath() + "/view/calculate-cylinder-volume.jsp");
         }
     }
 }

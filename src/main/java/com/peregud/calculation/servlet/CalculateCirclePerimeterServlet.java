@@ -22,9 +22,9 @@ public class CalculateCirclePerimeterServlet extends HttpServlet {
         try {
             double perimeter = CircleUtil.calculatePerimeter(Double.parseDouble(radius));
             request.setAttribute("perimeter", perimeter);
-            request.getRequestDispatcher("/calculate-circle-perimeter.jsp").forward(request, response);
+            request.getRequestDispatcher("/view/calculate-circle-perimeter.jsp").forward(request, response);
         } catch (Exception e) {
-            response.sendRedirect(request.getContextPath() + "/calculate-circle-perimeter.jsp");
+            response.sendRedirect(request.getContextPath() + "/view/calculate-circle-perimeter.jsp");
         }
     }
 }

@@ -17,6 +17,6 @@ public class StudentListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("students", studentDAO.getAll());
-        request.getRequestDispatcher("/list-students.jsp").forward(request,response);
+        request.getRequestDispatcher("/view/list-students.jsp").forward(request,response);
     }
 }

@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Application Form</title>
-    <link rel="stylesheet" href="style-application.css">
-    <script src="application.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/view/style-application.css">
+    <script src="${pageContext.request.contextPath}/view/application.js"></script>
 </head>
 
 <body>

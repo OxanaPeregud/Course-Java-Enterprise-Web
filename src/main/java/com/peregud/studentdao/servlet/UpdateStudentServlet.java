@@ -20,6 +20,6 @@ public class UpdateStudentServlet extends HttpServlet {
         String id = request.getParameter("studentId");
         Student student = studentDAO.getById(Integer.parseInt(id));
         request.setAttribute("student", student);
-        request.getRequestDispatcher("/student-form.jsp").forward(request, response);
+        request.getRequestDispatcher("/view/student-form.jsp").forward(request, response);
     }
 }
