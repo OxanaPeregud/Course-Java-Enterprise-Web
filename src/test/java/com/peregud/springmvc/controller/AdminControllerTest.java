@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
@@ -29,15 +30,23 @@ class AdminControllerTest {
     void addAdmin() throws Exception {
         List<Admin> listAdmins = new ArrayList<>();
         when(service.listAll()).thenReturn(listAdmins);
-        this.mockMvc.perform(get("/add-admin"))
+        this.mockMvc.perform(get("/add-admin")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(ControllerTest.requestBody(listAdmins)))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name("admin-table"));
+                .andExpect(MockMvcResultMatchers.view().name("admin-table"))
+                .andReturn();
     }
 
     @Test
     void getAdmin() throws Exception {
-        this.mockMvc.perform(get("/get-admin"))
+        List<Admin> listAdmins = new ArrayList<>();
+        when(service.listAll()).thenReturn(listAdmins);
+        this.mockMvc.perform(get("/get-admin")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(ControllerTest.requestBody(listAdmins)))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name("admin-table"));
+                .andExpect(MockMvcResultMatchers.view().name("admin-table"))
+                .andReturn();
     }
 }

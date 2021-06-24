@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
@@ -29,15 +30,22 @@ class StudentControllerTest {
     void addStudent() throws Exception {
         List<Student> listStudents = new ArrayList<>();
         when(service.listAll()).thenReturn(listStudents);
-        this.mockMvc.perform(get("/add-student"))
+        this.mockMvc.perform(get("/add-student")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(ControllerTest.requestBody(listStudents)))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name("student-table"));
+                .andExpect(MockMvcResultMatchers.view().name("student-table"))
+                .andReturn();
     }
 
     @Test
     void getStudent() throws Exception {
-        this.mockMvc.perform(get("/get-student"))
+        List<Student> listStudents = new ArrayList<>();
+        this.mockMvc.perform(get("/get-student")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(ControllerTest.requestBody(listStudents)))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name("student-table"));
+                .andExpect(MockMvcResultMatchers.view().name("student-table"))
+                .andReturn();
     }
 }
