@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +29,15 @@ class StudentControllerTest {
     void addStudent() throws Exception {
         List<Student> listStudents = new ArrayList<>();
         when(service.listAll()).thenReturn(listStudents);
-        this.mockMvc.perform(get("/add-student")).andExpect(status().isOk());
+        this.mockMvc.perform(get("/add-student"))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("student-table"));
     }
 
     @Test
     void getStudent() throws Exception {
-        this.mockMvc.perform(get("/get-student")).andExpect(status().isOk());
+        this.mockMvc.perform(get("/get-student"))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("student-table"));
     }
 }

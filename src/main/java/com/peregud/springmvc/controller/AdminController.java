@@ -6,7 +6,7 @@ import com.peregud.springmvc.util.DataGeneratorUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class AdminController {
     @Autowired
     private AdminService service;
 
-    @RequestMapping("/add-admin")
+    @GetMapping("/add-admin")
     public String addAdmin(Model model) {
         service.save(DataGeneratorUtil.generateAdmin());
         List<Admin> listAdmins = service.listAll();
@@ -24,7 +24,7 @@ public class AdminController {
         return "admin-table";
     }
 
-    @RequestMapping("/get-admin")
+    @GetMapping("/get-admin")
     public String getAdmin(Model model) {
         List<Admin> listAdmins = service.listAll();
         model.addAttribute("listAdmins", listAdmins);

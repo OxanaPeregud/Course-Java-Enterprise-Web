@@ -6,7 +6,7 @@ import com.peregud.springmvc.util.DataGeneratorUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class CourseController {
     @Autowired
     private CourseService service;
 
-    @RequestMapping("/add-course")
+    @GetMapping("/add-course")
     public String addCourse(Model model) {
         service.save(DataGeneratorUtil.generateCourse());
         List<?> listCourses = service.listAll();
@@ -24,7 +24,7 @@ public class CourseController {
         return "course-table";
     }
 
-    @RequestMapping("/get-course")
+    @GetMapping("/get-course")
     public String getCourse(Model model) {
         List<Course> listCourses = service.listAll();
         model.addAttribute("listCourses", listCourses);

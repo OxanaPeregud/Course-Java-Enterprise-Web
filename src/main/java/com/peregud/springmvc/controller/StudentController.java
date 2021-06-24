@@ -6,7 +6,7 @@ import com.peregud.springmvc.util.DataGeneratorUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class StudentController {
     @Autowired
     private StudentService service;
 
-    @RequestMapping("/add-student")
+    @GetMapping("/add-student")
     public String addStudent(Model model) {
         service.save(DataGeneratorUtil.generateStudent());
         List<Student> listStudents = service.listAll();
@@ -24,7 +24,7 @@ public class StudentController {
         return "student-table";
     }
 
-    @RequestMapping("/get-student")
+    @GetMapping("/get-student")
     public String getStudent(Model model) {
         List<Student> listStudents = service.listAll();
         model.addAttribute("listStudents", listStudents);

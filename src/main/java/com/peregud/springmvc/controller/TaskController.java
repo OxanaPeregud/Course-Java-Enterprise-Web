@@ -6,7 +6,7 @@ import com.peregud.springmvc.util.DataGeneratorUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class TaskController {
     @Autowired
     private TaskService service;
 
-    @RequestMapping("/add-task")
+    @GetMapping("/add-task")
     public String addTask(Model model) {
         service.save(DataGeneratorUtil.generateTask());
         List<Task> listTasks = service.listAll();
@@ -24,7 +24,7 @@ public class TaskController {
         return "task-table";
     }
 
-    @RequestMapping("/get-task")
+    @GetMapping("/get-task")
     public String getTask(Model model) {
         List<Task> listTasks = service.listAll();
         model.addAttribute("listTasks", listTasks);
