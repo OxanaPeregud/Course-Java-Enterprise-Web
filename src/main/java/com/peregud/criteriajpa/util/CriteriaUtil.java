@@ -1,6 +1,7 @@
 package com.peregud.criteriajpa.util;
 
 import com.peregud.criteriajpa.model.Student;
+import com.peregud.criteriajpa.model.Student_;
 import lombok.experimental.UtilityClass;
 
 import javax.persistence.EntityManager;
@@ -20,7 +21,7 @@ public class CriteriaUtil {
         CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
         Root<Student> root = criteriaQuery.from(Student.class);
         criteriaQuery.select(root)
-                .where(criteriaBuilder.gt(root.get("fee"), 250));
+                .where(criteriaBuilder.gt(root.get(Student_.fee), 250));
         TypedQuery<Student> query = entityManager.createQuery(criteriaQuery);
         List<Student> resultList = query.getResultList();
         String[] result = new String[resultList.size()];
@@ -37,7 +38,7 @@ public class CriteriaUtil {
         CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
         Root<Student> root = criteriaQuery.from(Student.class);
         criteriaQuery.select(root)
-                .where(criteriaBuilder.lt(root.get("fee"), 250));
+                .where(criteriaBuilder.lt(root.get(Student_.fee), 250));
         TypedQuery<Student> query = entityManager.createQuery(criteriaQuery);
         List<Student> resultList = query.getResultList();
         String[] result = new String[resultList.size()];
@@ -54,7 +55,7 @@ public class CriteriaUtil {
         CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
         Root<Student> root = criteriaQuery.from(Student.class);
         criteriaQuery.select(root)
-                .where(criteriaBuilder.like(root.get("name"), "%michael%"));
+                .where(criteriaBuilder.like(root.get(Student_.name), "%michael%"));
         TypedQuery<Student> query = entityManager.createQuery(criteriaQuery);
         List<Student> resultList = query.getResultList();
         String[] result = new String[resultList.size()];
@@ -71,7 +72,7 @@ public class CriteriaUtil {
         CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
         Root<Student> root = criteriaQuery.from(Student.class);
         criteriaQuery.select(root)
-                .where(criteriaBuilder.like(criteriaBuilder.lower(root.get("name")), "%michael%"));
+                .where(criteriaBuilder.like(criteriaBuilder.lower(root.get(Student_.name)), "%michael%"));
         TypedQuery<Student> query = entityManager.createQuery(criteriaQuery);
         List<Student> resultList = query.getResultList();
         String[] result = new String[resultList.size()];
@@ -88,7 +89,7 @@ public class CriteriaUtil {
         CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
         Root<Student> root = criteriaQuery.from(Student.class);
         criteriaQuery.select(root)
-                .where(criteriaBuilder.between(root.get("fee"), 200, 400));
+                .where(criteriaBuilder.between(root.get(Student_.fee), 200, 400));
         TypedQuery<Student> query = entityManager.createQuery(criteriaQuery);
         List<Student> resultList = query.getResultList();
         String[] result = new String[resultList.size()];
@@ -105,7 +106,7 @@ public class CriteriaUtil {
         CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
         Root<Student> root = criteriaQuery.from(Student.class);
         criteriaQuery.select(root)
-                .where(root.get("course").in("Java", "JavaScript"));
+                .where(root.get(Student_.course).in("Java", "JavaScript"));
         TypedQuery<Student> query = entityManager.createQuery(criteriaQuery);
         List<Student> resultList = query.getResultList();
         String[] result = new String[resultList.size()];
@@ -122,7 +123,7 @@ public class CriteriaUtil {
         CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
         Root<Student> root = criteriaQuery.from(Student.class);
         criteriaQuery.select(root)
-                .where(criteriaBuilder.isNull(root.get("course")));
+                .where(criteriaBuilder.isNull(root.get(Student_.course)));
         TypedQuery<Student> query = entityManager.createQuery(criteriaQuery);
         List<Student> resultList = query.getResultList();
         String[] result = new String[resultList.size()];
@@ -139,7 +140,7 @@ public class CriteriaUtil {
         CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
         Root<Student> root = criteriaQuery.from(Student.class);
         criteriaQuery.select(root)
-                .where(criteriaBuilder.isNotNull(root.get("course")));
+                .where(criteriaBuilder.isNotNull(root.get(Student_.course)));
         TypedQuery<Student> query = entityManager.createQuery(criteriaQuery);
         List<Student> resultList = query.getResultList();
         String[] result = new String[resultList.size()];
@@ -156,8 +157,8 @@ public class CriteriaUtil {
         CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
         Root<Student> root = criteriaQuery.from(Student.class);
         Predicate[] predicates = new Predicate[2];
-        predicates[0] = criteriaBuilder.isNotNull(root.get("course"));
-        predicates[1] = criteriaBuilder.like(root.get("name"), "james%");
+        predicates[0] = criteriaBuilder.isNotNull(root.get(Student_.course));
+        predicates[1] = criteriaBuilder.like(root.get(Student_.name), "james%");
         criteriaQuery.select(root)
                 .where(predicates);
         TypedQuery<Student> query = entityManager.createQuery(criteriaQuery);
@@ -175,8 +176,8 @@ public class CriteriaUtil {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
         Root<Student> root = criteriaQuery.from(Student.class);
-        Predicate predicate1 = criteriaBuilder.gt(root.get("fee"), 250);
-        Predicate predicate2 = criteriaBuilder.like(root.get("name"), "James%");
+        Predicate predicate1 = criteriaBuilder.gt(root.get(Student_.fee), 250);
+        Predicate predicate2 = criteriaBuilder.like(root.get(Student_.name), "James%");
         criteriaQuery.select(root)
                 .where(criteriaBuilder.and(predicate1, predicate2));
         TypedQuery<Student> query = entityManager.createQuery(criteriaQuery);
@@ -194,8 +195,8 @@ public class CriteriaUtil {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
         Root<Student> root = criteriaQuery.from(Student.class);
-        Predicate predicate1 = criteriaBuilder.gt(root.get("fee"), 250);
-        Predicate predicate2 = criteriaBuilder.like(root.get("name"), "James%");
+        Predicate predicate1 = criteriaBuilder.gt(root.get(Student_.fee), 250);
+        Predicate predicate2 = criteriaBuilder.like(root.get(Student_.name), "James%");
         criteriaQuery.select(root)
                 .where(criteriaBuilder.or(predicate1, predicate2));
         TypedQuery<Student> query = entityManager.createQuery(criteriaQuery);
@@ -214,7 +215,8 @@ public class CriteriaUtil {
         CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
         Root<Student> root = criteriaQuery.from(Student.class);
         criteriaQuery.select(root);
-        criteriaQuery.orderBy(criteriaBuilder.asc(root.get("name")), criteriaBuilder.desc(root.get("fee")));
+        criteriaQuery.orderBy(criteriaBuilder.asc(root.get(Student_.name)),
+                criteriaBuilder.desc(root.get(Student_.fee)));
         TypedQuery<Student> query = entityManager.createQuery(criteriaQuery);
         List<Student> resultList = query.getResultList();
         String[] result = new String[resultList.size()];
@@ -246,7 +248,7 @@ public class CriteriaUtil {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Double> criteriaQuery = criteriaBuilder.createQuery(Double.class);
         Root<Student> root = criteriaQuery.from(Student.class);
-        criteriaQuery.select(criteriaBuilder.avg(root.get("fee")));
+        criteriaQuery.select(criteriaBuilder.avg(root.get(Student_.fee)));
         TypedQuery<Double> query = entityManager.createQuery(criteriaQuery);
         List<Double> resultList = query.getResultList();
         Double[] result = new Double[resultList.size()];
@@ -262,7 +264,7 @@ public class CriteriaUtil {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Integer> criteriaQuery = criteriaBuilder.createQuery(Integer.class);
         Root<Student> root = criteriaQuery.from(Student.class);
-        criteriaQuery.select(criteriaBuilder.sum(root.get("fee")));
+        criteriaQuery.select(criteriaBuilder.sum(root.get(Student_.fee)));
         TypedQuery<Integer> query = entityManager.createQuery(criteriaQuery);
         List<Integer> resultList = query.getResultList();
         Integer[] result = new Integer[resultList.size()];
@@ -280,7 +282,7 @@ public class CriteriaUtil {
         Root<Student> root = criteriaQuery.from(Student.class);
         long startTimeCriteria = System.nanoTime();
         criteriaQuery.select(root)
-                .where(criteriaBuilder.like(root.get("name"), "%Michael%"));
+                .where(criteriaBuilder.like(root.get(Student_.name), "%Michael%"));
         TypedQuery<Student> query = entityManager.createQuery(criteriaQuery);
         List<Student> results = query.getResultList();
         long endTimeCriteria = System.nanoTime();
